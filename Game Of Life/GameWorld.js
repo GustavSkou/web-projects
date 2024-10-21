@@ -25,6 +25,8 @@ class GameWorld
                 }
             }
         });
+
+
     }
 
     GenerateWorldCells()
@@ -32,14 +34,15 @@ class GameWorld
         const windowHeight = window.innerHeight;
         const windowWidth = window.innerWidth;
 
-        for (let row = 0; row < Math.floor(windowHeight/11)-2; row++)
+
+        for (let row = 0; row < Math.floor(windowHeight/10)-1; row++)
         {
             const cells = document.createElement("div");
             cells.classList.add("cells");
 
             const cellsRow = []; 
 
-            for (let column = 0; column < Math.floor(windowWidth/11)-2; column++)
+            for (let column = 0; column < Math.floor(windowWidth/10)-1; column++)
             {    
                 const cell = new Cell(column, row);
                 cells.appendChild(cell.cell);
@@ -48,7 +51,8 @@ class GameWorld
             this.world.appendChild(cells);
             this.worldMap.push(cellsRow);
         }
-
+        console.log(this.worldMap.length)
+        console.log(this.worldMap[0].length)
     }
 
     PlaceCell(row, column)

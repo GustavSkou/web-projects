@@ -2,10 +2,16 @@ body {
 
 }
 
+.nav {
+    height: 50px;
+    width: max-content;
+    margin: 0px;
+    background-color: black;
+}
+
 .cell {
     height: 10px;
     width: 10px;
-    border: 1px solid black;
 }
 .alive {
     background-color: rgb(255, 80, 80);

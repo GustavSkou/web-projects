@@ -3,8 +3,8 @@ class Cell {
         this.cell = document.createElement("div");
         this.cell.classList.add("cell");
 
-        this.x = x;
-        this.y = y;
+        this.column = x;
+        this.row = y;
         this.state = false;
         this.nextState = false;
         this.cell.classList.add("dead");
@@ -47,15 +47,31 @@ class Cell {
     GetAliveNeighbors(worldMap) {
         let aliveNeighbors = 0;
 
-        for (let row = this.y - 1; row <= this.y + 1; row++) {
-            for (let column = this.x - 1; column <= this.x + 1; column++) {
-                if (row === this.y && column === this.x) {  // Skip the current cell
+        for (let row = this.row - 1; row <= this.row + 1; row++) {
+            for (let column = this.column - 1; column <= this.column + 1; column++) {
+
+                let neighborRow = row
+                let neighborColumn = column
+
+                if (row === this.row && column === this.column) {  // Skip the current cell
                     continue;
                 }
-                if (row < 0 || column < 0 || row >= worldMap.length || column >= worldMap[0].length) {   // Skip the cells that are out of bounds
-                    continue;
+
+                if (row < 0) {
+                    neighborRow = worldMap.length - 1;
                 }
-                if (worldMap[row][column].state === true) {
+                if (row >= worldMap.length) {
+                    neighborRow = 0;
+                }
+
+                if (column < 0) {
+                    neighborColumn = worldMap[0].length - 1;
+                }
+                if (column >= worldMap[0].length) {
+                    neighborColumn = 0;
+                }   
+
+                if (worldMap[neighborRow][neighborColumn].state === true) {
                     aliveNeighbors++;
                 }
             }
