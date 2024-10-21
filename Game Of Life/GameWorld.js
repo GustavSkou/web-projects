@@ -6,6 +6,25 @@ class GameWorld
     {
         this.world = document.getElementById("game-container");
         this.worldMap = [];
+        this.isRunning = false;
+        this.intervalId = null;
+
+        document.addEventListener('keydown', (event) =>{
+            if(event.code === "Space")
+            {
+                console.log("space pressed");
+                this.isRunning = !this.isRunning;
+                
+                if (this.isRunning){
+                    this.intervalId = setInterval(() => {
+                        this.UpdateWorldCells();
+                    }, 100);
+                }
+                if (!this.isRunning){
+                    clearInterval(this.intervalId);
+                }
+            }
+        });
     }
 
     GenerateWorldCells()
@@ -13,14 +32,14 @@ class GameWorld
         const windowHeight = window.innerHeight;
         const windowWidth = window.innerWidth;
 
-        for (let row = 0; row < Math.floor(windowHeight/10)-1; row++)
+        for (let row = 0; row < Math.floor(windowHeight/11)-2; row++)
         {
             const cells = document.createElement("div");
             cells.classList.add("cells");
 
             const cellsRow = []; 
 
-            for (let column = 0; column < Math.floor(windowWidth/10); column++)
+            for (let column = 0; column < Math.floor(windowWidth/11)-2; column++)
             {    
                 const cell = new Cell(column, row);
                 cells.appendChild(cell.cell);
@@ -30,8 +49,6 @@ class GameWorld
             this.worldMap.push(cellsRow);
         }
 
-        console.log(this.worldMap.length);
-        console.log(this.worldMap[0].length);
     }
 
     PlaceCell(row, column)

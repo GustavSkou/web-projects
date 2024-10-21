@@ -6,20 +6,31 @@ class Cell {
         this.x = x;
         this.y = y;
         this.state = false;
-        this.nexteState = false;
+        this.nextState = false;
         this.cell.classList.add("dead");
+
+        this.cell.addEventListener("click", () => {
+            console.log("Cell clicked");
+            this.ChangeState();
+        });
     }
 
     SetNextStateAlive()
     {
-        this.state = true;
-        this.cell.classList.replace("dead","alive");
+        this.nextState = true;
+        this.cell.classList.replace("dead", "alive");
     }
     SetNextStateDead()
     {
-        this.state = false;
-        this.cell.classList.replace("alive","dead");
+        this.nextState = false;
+        this.cell.classList.replace("alive", "dead");
     }
+    KeepState()
+    {
+        this.nextState = this.state;
+    }  
+
+
     ChangeState()
     {
         this.state = !this.state;
@@ -35,7 +46,7 @@ class Cell {
 
     GetAliveNeighbors(worldMap) {
         let aliveNeighbors = 0;
-        
+
         for (let row = this.y - 1; row <= this.y + 1; row++) {
             for (let column = this.x - 1; column <= this.x + 1; column++) {
                 if (row === this.y && column === this.x) {  // Skip the current cell
@@ -46,7 +57,6 @@ class Cell {
                 }
                 if (worldMap[row][column].state === true) {
                     aliveNeighbors++;
-                    console.log(aliveNeighbors);
                 }
             }
         }
@@ -54,8 +64,8 @@ class Cell {
     }
 
     UpdateNextState(worldMap) {
-        const someWorldMap = worldMap;
-        const aliveNeighbors = this.GetAliveNeighbors(someWorldMap);
+        let someWorldMap = worldMap;
+        let aliveNeighbors = this.GetAliveNeighbors(someWorldMap);
         if (this.state === false && aliveNeighbors === 3) {
             this.SetNextStateAlive();
             return;
@@ -65,13 +75,13 @@ class Cell {
             return;
         }
         if (this.state === true && aliveNeighbors === 3 || this.state === true && aliveNeighbors === 2) {
-            return;
+            this.KeepState();
         }
     }
 
     UpdateCurrentState()
     {
-        this.state = this.nexteState;
+        this.state = this.nextState;
     }
 }
 export default Cell;
