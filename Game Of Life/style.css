@@ -1,12 +1,5 @@
 body {
-
-}
-
-.nav {
-    height: 50px;
-    width: max-content;
-    margin: 0px;
-    background-color: black;
+    background-color: rgb(92, 92, 92);
 }
 
 .cell {
@@ -14,10 +7,10 @@ body {
     width: 10px;
 }
 .alive {
-    background-color: rgb(255, 80, 80);
+    background-color: rgb(201, 201, 201);
 }
 .dead {
-    background-color: rgb(167, 167, 167);
+    background-color: rgb(92, 92, 92);
 }
 .blue {
     background-color: rgb(111, 135, 255);
@@ -29,4 +22,17 @@ body {
     margin-bottom: 0px;
     width: fit-content;
     height: fit-content;
+}
+
+.generation-container {
+    display: flex;
+    margin: auto;
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    gap: 10px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
 }
