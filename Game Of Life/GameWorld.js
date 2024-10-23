@@ -18,6 +18,7 @@ class GameWorld
                 if (this.isRunning){
                     this.intervalId = setInterval(() => {
                         this.UpdateWorldCells();
+                        
                     }, 100);
                 }
                 if (!this.isRunning){

@@ -82,6 +82,7 @@ class Cell {
     UpdateNextState(worldMap) {
         let someWorldMap = worldMap;
         let aliveNeighbors = this.GetAliveNeighbors(someWorldMap);
+
         if (this.state === false && aliveNeighbors === 3) {
             this.SetNextStateAlive();
             return;
@@ -92,6 +93,7 @@ class Cell {
         }
         if (this.state === true && aliveNeighbors === 3 || this.state === true && aliveNeighbors === 2) {
             this.KeepState();
+            return;
         }
     }
 
