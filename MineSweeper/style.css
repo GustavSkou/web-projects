@@ -1,0 +1,17 @@
+body {
+    background-color: beige;
+}
+
+.cell {
+    display: flex;
+    background-color: black;
+    height: 10px;
+    width: 10px;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    height: fit-content;
+    margin: 0px;
+}
