@@ -6,26 +6,6 @@ class GameWorld
     {
         this.world = document.getElementById("game-container");
         this.worldMap = [];
-        this.isRunning = false;
-        this.intervalId = null;
-
-        document.addEventListener('keydown', (event) =>{
-            if(event.code === "Space")
-            {
-                console.log("space pressed");
-                this.isRunning = !this.isRunning;
-                
-                if (this.isRunning){
-                    this.intervalId = setInterval(() => {
-                        this.UpdateWorldCells();
-                        
-                    }, 100);
-                }
-                if (!this.isRunning){
-                    clearInterval(this.intervalId);
-                }
-            }
-        });
     }
 
     GenerateWorldCells()
@@ -33,8 +13,7 @@ class GameWorld
         const windowHeight = window.innerHeight;
         const windowWidth = window.innerWidth;
 
-
-        for (let row = 0; row < Math.floor(windowHeight/10)-1; row++)
+        for (let row = 0; row < Math.floor(windowHeight/10)-5; row++)
         {
             const cells = document.createElement("div");
             cells.classList.add("cells");
