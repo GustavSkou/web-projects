@@ -6,6 +6,11 @@ h2 {
     font-size: smaller;
 }
 
+button {
+    width: fit-content;
+    border-radius: 5px;
+}
+
 .cell {
     height: 10px;
     width: 10px;
@@ -16,9 +21,6 @@ h2 {
 .dead {
     background-color: rgb(92, 92, 92);
 }
-.blue {
-    background-color: rgb(111, 135, 255);
-}
 
 .cells {
     display: flex;
@@ -28,9 +30,15 @@ h2 {
     height: fit-content;
 }
 
+.navagation-bar {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 10px;
+}
+
 .generation-container {
     display: flex;
-    margin: auto;
     background-color: white;
     height: fit-content;
     width: fit-content;
@@ -38,5 +46,6 @@ h2 {
 
     padding-left: 15px;
     padding-right: 15px;
+    border: 1px solid black;
     border-radius: 5px;
 }

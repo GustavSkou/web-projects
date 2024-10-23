@@ -3,8 +3,11 @@ class NavigationBar
     constructor()
     {
         this.navbar = document.getElementById("navbar");
+        this.navbar.classList.add("navagation-bar");
+
         this.generation = document.createElement("div");
-        this.pauseButton = document.createElement("div");
+        this.pauseButton = document.createElement("button");
+        this.pauseButton.textContent = "pause";
 
         this.currentGeneration = 0;
 
@@ -38,6 +41,12 @@ class NavigationBar
         this.currentGeneration = this.currentGeneration + 1;
         this.generation.lastChild.textContent = this.currentGeneration;
     }
+
+    CreatePauseButtonDiv()
+    {
+        
+    }
+
 }
 
 export default NavigationBar;
