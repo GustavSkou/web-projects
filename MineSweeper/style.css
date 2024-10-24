@@ -1,12 +1,23 @@
 body {
-    background-color: beige;
+    background-color: lightgrey;
+}
+
+.gameContainer {
+    width: fit-content;
+    height: fit-content;
+    background-color: grey;
+    padding: 15px;
+    border-radius: 5px;
+
 }
 
 .cell {
     display: flex;
-    background-color: black;
-    height: 10px;
-    width: 10px;
+    background-color: lightgrey;
+
+    border: 1px solid black;
+    height: 25px;
+    width: 25px;
 }
 .row {
     display: flex;

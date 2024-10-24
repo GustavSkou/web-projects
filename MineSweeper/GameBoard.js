@@ -5,8 +5,9 @@ class GameBoard
     constructor(height, width)
     {
         this.gameContainer = document.getElementById("game-container");
-        this.height;
-        this.width;
+        this.gameContainer.classList.add("gameContainer");
+        this.height = height;
+        this.width = width;
 
         this.gameBoard = [];
     }
@@ -17,12 +18,12 @@ class GameBoard
         {
             const row = [];
             const rowDiv = document.createElement("div");
-            rowDiv.classList("row");
+            rowDiv.classList.add("row");
 
             for (let column = 0; column < this.width; column++)
             {
                 const cell = new Cell();
-                
+                console.log("new cell")
                 rowDiv.appendChild(cell.cell);
                 row.push(cell);
             }
